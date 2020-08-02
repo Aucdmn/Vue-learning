@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定和双向数据绑定</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <!-- 挂载点 -->
+    <div id="root">
+        <!-- 当前 title 这个 属性 与 title 这个 数据项 进行绑定 -->
+        <div v-bind:title="title">Hello World!</div>
+    </div>
+
+    <script>
+        // 实例
+        new Vue({
+            el: "#root",
+            data: {
+                title: "This is Hello World"
+            }
+        })
+    </script>
+</body>
+</html>
