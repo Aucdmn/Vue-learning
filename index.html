@@ -39,6 +39,21 @@
         <input type="text" v-model="message">
     </div>
 
+    <div id="template-learning">
+        <span>Message: {{msg}}</span>
+        <span v-once>只会更改一次的span：{{msg_once}}</span>
+        <br>
+        <span>使用Mustache: {{rawHtml}}</span>
+        <br>
+        <span>使用v-html <span v-html='rawHtml'>This should be red.</span></span>
+        <br>
+        <p>{{ number + 1 }}</p>
+        <p>{{ ok ? 'YES' : 'NO' }}</p>
+        <p>{{ newMsg.split('').reverse().join('') }}</p>
+    </div>
+
+
+
     <script>
 
         // just 显示字符串
@@ -99,6 +114,18 @@
             }
         });
 
+        // 模板语法
+        let InYourArea = new Vue({
+            el: '#template-learning',
+            data: {
+                msg: '模板语法：文本',
+                msg_once: 'Only you',
+                rawHtml: '<span style="color:red">This should be red.</span>',
+                number: 10,
+                ok: false,
+                newMsg: 'Go Live'
+            }
+        })
 
     </script>
 </body>
