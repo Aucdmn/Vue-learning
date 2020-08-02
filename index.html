@@ -16,7 +16,32 @@
             鼠标悬停几秒钟查看此处动态绑定的提示信息
         </span>
     </div>
+
+    <div id="app-3">
+        <p v-if='seen'>现在你看到我了</p>
+    </div>
+
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">reverse</button>
+    </div>
+
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input type="text" v-model="message">
+    </div>
+
     <script>
+
+        // just 显示字符串
         let app = new Vue({
             el: '#app',
             data: {
@@ -25,12 +50,56 @@
             }
         });
 
+        // 鼠标悬浮显示
         let app2 = new Vue({
             el: '#app-2',
             data: {
                 message: '页面加载于' + new Date().toLocaleString()
             }
+        });
+
+        //  可隐藏元素的操作（操作DOM）
+        let app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        });
+
+        // 可随时增加元素的 todo-list
+        let app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { text: '学习 javascript '},
+                    { text: '学习 Vue '},
+                    { text: '整个牛项目 '}
+                ]
+            }
+        });
+
+        // 反转字符串
+        let app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Fucking awesome'
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
         })
+
+        // 即时显示输入
+        let app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Amazing shithole'
+            }
+        });
+
+
     </script>
 </body>
 </html>
