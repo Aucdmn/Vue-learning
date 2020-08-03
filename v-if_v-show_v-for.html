@@ -14,7 +14,7 @@
         <div v-show="show">Hello World!</div>
         <button @click="handleClick">toggle</button>
         <ul>
-            <li v-for="(item,index) of list" key="index">{{item}}</li>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
         </ul>
     </div>
     
