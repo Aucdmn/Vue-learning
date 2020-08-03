@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title>v-if,v-show以及v-for指令</title>
+</head>
+<body>
+    <div id="root">
+        <!-- v-if: 直接把元素从DOM树上删去 -->
+        <div v-if="show">Hello World!</div>
+        <!-- v-show: 给元素设置css属性 display：none -->
+        <div v-show="show">Hello World!</div>
+        <button @click="handleClick">toggle</button>
+        <ul>
+            <li v-for="(item,index) of list" key="index">{{item}}</li>
+        </ul>
+    </div>
+    
+    <script>
+        new Vue({
+            el: "#root",
+            data: {
+                show: true,
+                list: [1,2,3]
+            },
+            methods: {
+                handleClick: function() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>
