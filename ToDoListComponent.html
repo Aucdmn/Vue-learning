@@ -9,13 +9,24 @@
 <body>
     <div id="root">
         <input v-model="inputValue">
-        <button @click="handleSubmit">??</button>
+        <button @click="handleSubmit">提交</button>
         <ul>
-            <li v-for="(item, index) of list" :key="index">{{item}}</li>
+            <todo-item 
+                v-for="(item, index) of list" 
+                :key="index"
+                :content="item"
+            >
+            </todo-item>
         </ul>
     </div>
 
     <script>
+
+        Vue.component('todo-item', {
+            props: ['content'],
+            template: '<li>{{content}}</li>'
+        })
+
         new Vue({
             el: "#root",
             data: {
