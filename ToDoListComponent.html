@@ -8,6 +8,8 @@
 </head>
 <body>
     <div id="root">
+        <!-- 以下全为父组件对应的模板 -->
+        <!-- 父组件向子组件传递函数：通过属性 -->
         <input v-model="inputValue">
         <button @click="handleSubmit">提交</button>
         <ul>
@@ -15,18 +17,30 @@
                 v-for="(item, index) of list" 
                 :key="index"
                 :content="item"
+                :index="index"
+                @delete="handleDelete"
             >
             </todo-item>
         </ul>
     </div>
 
     <script>
-
+        // Vue 中的每一个组件都是一个 Vue 的实例
+        // 子组件
+        // 子组件向父组件传递参数：通过发布订阅模式
         Vue.component('todo-item', {
-            props: ['content'],
-            template: '<li>{{content}}</li>'
+            props: ['content', 'index'],
+            template: '<li @click="handleClick">{{content}}</li>',
+            methods: {
+                handleClick: function() {
+                    // 如果想要删除子组件，则需要在父组件内将其
+                    // 对应的数据也删掉
+                    this.$emit('delete', this.index)
+                }
+            }
         })
 
+        // 父组件
         new Vue({
             el: "#root",
             data: {
@@ -37,6 +51,10 @@
                 handleSubmit: function() {
                     this.list.push(this.inputValue),
                     this.inputValue = " "
+                },
+                // handleDelete函数需传参进来
+                handleDelete: function(index) {
+                    this.list.splice(index, 1)
                 }
             }
         })
