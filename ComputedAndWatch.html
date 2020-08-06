@@ -12,6 +12,10 @@
         名：<input v-model="firstName">
         <div>{{fullName}}</div>
         <div>{{count}}</div>
+        <div>Original message: {{message}}</div>
+        <div>Reversed message: {{reversedMessage}}</div>
+        <div>Now: {{now}}</div>
+        <div class="static" v-bind="{active: isActive, work: isWork}"></div>
     </div>
 
     <script>
@@ -20,11 +24,20 @@
             data: {
                 lastName: '',
                 firstName: '',
-                count: 0
+                count: 0,
+                message: 'Go Fuck Yourself',
+                isActive: true,
+                isWork: false
             },
             computed: {
                 fullName: function() {
                     return this.lastName + ' ' +this.firstName
+                },
+                reversedMessage () {
+                    return this.message.split('').reverse().join('')
+                },
+                now () {
+                    return Date.now()
                 }
             },
             watch: {
