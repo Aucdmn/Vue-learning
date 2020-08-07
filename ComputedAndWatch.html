@@ -15,7 +15,19 @@
         <div>Original message: {{message}}</div>
         <div>Reversed message: {{reversedMessage}}</div>
         <div>Now: {{now}}</div>
-        <div class="static" v-bind="{active: isActive, work: isWork}"></div>
+        <div class="static" v-bind:style="styleObj">lok666</div>
+        <!-- 条件渲染 -->
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+        <!-- 列表渲染 -->
+        <div>
+            v-for 列表渲染：
+            <ul>
+                <li v-for="(item, index) of items" :key="index">
+                    {{index}} {{item}}
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -27,7 +39,20 @@
                 count: 0,
                 message: 'Go Fuck Yourself',
                 isActive: true,
-                isWork: false
+                isWork: false,
+                styleObj: {
+                    height: '50px',
+                    width: '100px',
+                    color: 'red' ,
+                    fontSize: '50px',
+                    backgroundColor: 'blue'
+                },
+                items: [
+                    'foo',
+                    'bar',
+                    'foz',
+                    'baz'
+                ]
             },
             computed: {
                 fullName: function() {
