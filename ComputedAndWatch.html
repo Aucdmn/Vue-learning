@@ -28,6 +28,11 @@
                 </li>
             </ul>
         </div>
+        <!-- 监听事件 -->
+        <div id="example-1">
+            <button v-on:click="counter += 1">Add 1</button>
+            <p>This button has been clicked {{ counter }} times</p>
+        </div>
     </div>
 
     <script>
@@ -47,12 +52,14 @@
                     fontSize: '50px',
                     backgroundColor: 'blue'
                 },
+                awesome: false,
                 items: [
                     'foo',
                     'bar',
                     'foz',
                     'baz'
-                ]
+                ],
+                counter: 0
             },
             computed: {
                 fullName: function() {
@@ -70,7 +77,6 @@
                     this.count++
                 }
             }
-
         })
     </script>
 </body>
