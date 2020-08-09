@@ -33,9 +33,28 @@
             <button v-on:click="counter += 1">Add 1</button>
             <p>This button has been clicked {{ counter }} times</p>
         </div>
+        <!-- 组件示例 -->
+        <div id="components-demo">
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+        </div>
     </div>
 
     <script>
+        Vue.component('button-counter', {
+            data: function() {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        });
+
+        // new Vue({
+        //     el: '#components-demo'
+        // });
+
         new Vue({
             el: "#root",
             data: {
